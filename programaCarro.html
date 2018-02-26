@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<!--
+<html>
+    <head>
+        <title>Progrma Carro</title>
+        <h1>Uber</h1>
+        <p>Total r$ 40,00</p>
+
+        <h1>Carro</h1>
+        <p>Gasolina r$ 10,50</p>
+        <p>Estacionamento r$ 10,00</p>
+        <p>Total r$ 20,50</p>
+    </head>
+</html>
+-->
+<script src="funcoes.js"> </script>
+<script>
+    
+
+        var tempoMinuto = devolveUmNumeroDecimal("Digite o tempo em minutos");
+        var precoBase = 2.20;
+        var distancia = devolveUmNumeroDecimal("Digite a distância");
+        var uber = precoBase + (distancia * 1.40) + (tempoMinuto * 0.26);  
+        
+        var consumo = devolveUmNumeroDecimal("Digite o consumo");
+        var preco = devolveUmNumeroDecimal("Digite o preço da gasolina");
+        var gasolina = (distancia * preco)/ consumo;
+        var estacionamento = devolveUmNumeroDecimal("Digite o valor do estacionamento");
+        var total = (gasolina + estacionamento);
+
+            document.write("<h1> Uber  </h1> " ); 
+            document.write("<p>Total r$ " + formatarGrana(uber) + "</p>");
+            document.write("<h1>Carro</h1> ");
+            document.write("<p>Total r$ " + formatarGrana(total) + "</p>");
+
+    </script>
