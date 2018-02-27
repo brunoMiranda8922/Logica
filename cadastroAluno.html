@@ -1,0 +1,38 @@
+<meta charset="UFT-8">
+    <html>
+        <h1> Cadastro Aluno</h1>
+    </html>
+<script src="funcoes.js"> </script>
+
+<script> 
+    var nome = prompt("Digite seu nome: ");
+    var peso = devolveUmNumeroDecimal("Digite seu peso: ");
+    var altura = devolveUmNumeroDecimal("Digite sua altura: ");
+    var idade = prompt("Digite sua idade: ");
+    var imc = peso / (altura * altura);
+
+    document.write("<p>" + "Seu nome é: "  + nome + "<p>");
+    document.write("<p>" + "Seu peso é : " + peso + "</p>"); 
+    document.write("<p>" + "Seu altura é : " + altura + "</p>"); 
+    document.write("<p>" + "Seu idade : " + idade + "</p>"); 
+    document.write("<p>" + "Seu imc é : " + formatarGrana(imc) + "</p>"); 
+
+
+    if (imc < 18){
+        document.write("Você está magro");
+    
+    }
+    else if (imc <25){
+        document.write("Você está ok"); 
+    }
+
+    else if (imc < 30){
+        document.write("Você está obeso");
+
+    }
+    else {
+        document.write("Muito obeso");
+    }
+
+
+</script>

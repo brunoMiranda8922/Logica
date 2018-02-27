@@ -1,0 +1,43 @@
+<meta charset="UTF-8">
+
+
+<script> 
+    
+    function calculaIdade (dia, mes, ano) {
+        var dataHoje = new Date();
+        var diaAtual = dataHoje.getDate()
+        var mesAtual = dataHoje.getMonth()
+        var anoAtual = dataHoje.getFullYear(); 
+        var idade = anoAtual - ano;
+         
+
+
+        if (mesAtual == mes){
+            if(diaAtual >= dia){
+                return idade; 
+            } 
+            else {
+                return idade - 1;
+            }
+        }
+        else if(mesAtual < mes){
+            return idade - 1;
+
+        }
+            return idade;
+    }
+    
+    var data = prompt("Qual sua data de nascimento? ")
+    var arrayData = data.split("/");
+    var mes = parseInt(arrayData[0]);
+    var dia = parseInt(arrayData[1]);
+    var ano = parseInt(arrayData[2]);
+    
+    document.write("Sua idade é " + calculaIdade(dia, mes, ano));
+    
+
+   
+  
+
+
+</script>
