@@ -1,0 +1,70 @@
+<meta charset="UTF-8">
+
+    <button id="botaoStart"> Start</button>
+
+
+
+<script src="funcoes.js"> </script>
+<script>
+
+    function sorteia(num) {
+        
+        var Arraynumero = []; 
+       /* for(var i = 0; i < num; i++){
+            Arraynumero.push(Math.round(Math.random() * 60));
+        }
+        return Arraynumero; */
+
+        var i = 0; 
+        while(i < num){
+            var numero = (Math.round(Math.random()* 5));
+            if (Arraynumero.contain(numero) == false){
+                Arraynumero.push(numero);
+                i++;
+            }
+    
+        }   
+            return Arraynumero;
+    }
+
+
+
+    function start() {
+        var numeroSorteado = sorteia(6);
+        console.log(numeroSorteado);
+
+        var chute = parseInt(prompt("Chute um numero! Tente a sorte "));
+    
+                                          
+                                                
+            var  tentativaChute = 1;
+
+            while((chute < 0 || chute > 60 || chute != chute ) && tentativaChute < 3) {
+                alert("Numero invalido!! Apenas numeros entre 0 e 10");
+                chute = parseInt(prompt("Digite novamente"));
+                tentativaChute ++    
+                }
+                
+            
+            
+            if(tentativaChute >= 3){
+                alert("GameOver");
+                
+            } 
+        
+            if(numeroSorteado.contain(chute)){
+
+                alert("Você acertou");
+ 
+            }
+            else {
+                alert("Você errou");
+            }
+       
+    }
+    
+
+        botaoStart.onclick = start;
+      
+
+</script>

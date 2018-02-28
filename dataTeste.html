@@ -1,0 +1,18 @@
+<meta charset="UTF-8">
+
+<script>
+    semana = new Date();
+    
+    var novoDia = semana.getDate() + 14
+    semana.setDate(novoDia);
+
+    
+
+
+    Date.prototype.adicionarDias = function(dias){
+        var novoDia = this.getDate() + dias;
+        this.setDate(novoDia);
+    }
+
+    document.write(semana);
+</script>

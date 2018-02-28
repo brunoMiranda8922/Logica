@@ -8,16 +8,18 @@
         var derrota = parseInt(prompt("Digite o número de derrota: "));
         var empate = parseInt(prompt("Digite o número de empates: "));
         var resultado =  (vitoria * 3) + empate;
-        // return {time: time, resultado: resultado};
-        return [time,resultado]
+        return {nome: time, resultado: resultado};
+       //return [time,resultado]
     }
 
         var time1 = calculoFutebol();
 
         var time2 = calculoFutebol();
 
-        if (time1[1] > time2[1]){
+         /*
+         if (time1[1] > time2[1]){
             document.write(time1[0] + " Venceu " + time[1]);
+            
         } 
         else { 
             if (time1[1] == time2[1]){
@@ -27,8 +29,19 @@
                 document.write(time2[0] + " Venceu " + time2[1]);
             }
         }
-
+        */
     
-    
+        if (time1.resultado > time2.resultado){
+            document.write(time1.nome + " Venceu " + time1.resultado + " pontos");
+            
+        } 
+        else { 
+            if (time1.resultado == time2.resultado){
+                document.write("Empatou");
+            }  
+            else {
+                document.write(time2.nome + " Venceu " + time2.resultado + " pontos");
+            }
+        }
 
 </script>

@@ -11,3 +11,7 @@ function formatarNumero(resposta, numeroCasas){
 function formatarGrana(resposta){
     return formatarNumero(resposta, 2);
 }
+
+Array.prototype.contain = function (valor){
+    return this.indexOf(valor) >= 0;  
+}
