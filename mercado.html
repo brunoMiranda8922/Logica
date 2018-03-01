@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<html>
+    
+        <h1 class ="titulo"> Caixa de supermercado</h1>
+        <input id ="campoNome" placeholder="Digite um produto" class ="campo">
+        <input id ="campoPreco" placeholder="Digite um valor" class ="campo">
+        <button id ="botaoPedido"> Adicionar Produto</button>
+    
+</html>
+
+<script src = "funcoes.js"> </script>
+<script src = "http://79bc9b1e.ngrok.io/mostra.js"> </script>
+<link href="estilo.css" rel="stylesheet">
+
+<script>
+    function pedido (){
+        var nome = campoNome.value;
+        var preco = parseFloat(campoPreco.value.replace("," , "."));
+       
+        if ((nome == " " || nome.length < 2) || (isNaN(preco) || preco <= 0)){ 
+            //alert("Digite uma informação válida!");
+            if(nome == " " || nome.length < 2){
+                alert ("Nome inválido");
+            }  
+            if (isNaN(preco) || preco <= 0){
+                alert("O valor esta inválido");
+            }
+           
+        } else{
+            mostra("<h3>" + nome + " R$ " + formataGrana(preco) + "</h3>");
+        }
+        
+    }
+var button = document.querySelector("#botaoPedido");
+    button.onclick = pedido;
+</script>

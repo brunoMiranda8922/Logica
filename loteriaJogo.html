@@ -24,10 +24,33 @@
             }
     
         }   
-            return Arraynumero;
-    }
+
+             
+       
+        for(i = 0; i < Arraynumero.length; i++){
+            var menor = i;
+            for(var j = i + 1; j < Arraynumero.length; j++){
+                
+                if(Arraynumero[j] < Arraynumero[menor]){
+                   menor = j 
+                    
+                }
+                   
+            }
+
+                    var x = Arraynumero[i];
+                    Arraynumero[i] = Arraynumero[menor];
+                    Arraynumero[menor] = x;
 
 
+          
+        }
+           
+        return Arraynumero; 
+
+   }     
+        
+    
 
     function start() {
         var numeroSorteado = sorteia(6);
@@ -39,7 +62,7 @@
                                                 
             var  tentativaChute = 1;
 
-            while((chute < 0 || chute > 60 || chute != chute ) && tentativaChute < 3) {
+            while((chute < 0 || chute > 60 || chute != chute ) && tentativaChute < 2) {
                 alert("Numero invalido!! Apenas numeros entre 0 e 10");
                 chute = parseInt(prompt("Digite novamente"));
                 tentativaChute ++    
@@ -47,7 +70,7 @@
                 
             
             
-            if(tentativaChute >= 3){
+            if(tentativaChute >= 2){
                 alert("GameOver");
                 
             } 
@@ -62,7 +85,7 @@
             }
        
     }
-    
+
 
         botaoStart.onclick = start;
       
