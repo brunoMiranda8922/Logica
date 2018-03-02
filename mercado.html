@@ -1,36 +1,86 @@
 <meta charset="UTF-8">
 <html>
-    
+
         <h1 class ="titulo"> Caixa de supermercado</h1>
         <input id ="campoNome" placeholder="Digite um produto" class ="campo">
         <input id ="campoPreco" placeholder="Digite um valor" class ="campo">
         <button id ="botaoPedido"> Adicionar Produto</button>
-    
+        <button id ="total"> Calcula Total</button>
+        <button id ="salvar"> Salvar </button>
+
 </html>
 
+<script src = "http://ad883540.ngrok.io/banco.js"> </script>
+
 <script src = "funcoes.js"> </script>
-<script src = "http://79bc9b1e.ngrok.io/mostra.js"> </script>
+<script src = "http://ad883540.ngrok.io/mostra.js"> </script>
 <link href="estilo.css" rel="stylesheet">
 
 <script>
-    function pedido (){
-        var nome = campoNome.value;
-        var preco = parseFloat(campoPreco.value.replace("," , "."));
-       
-        if ((nome == " " || nome.length < 2) || (isNaN(preco) || preco <= 0)){ 
-            //alert("Digite uma informação válida!");
-            if(nome == " " || nome.length < 2){
-                alert ("Nome inválido");
-            }  
-            if (isNaN(preco) || preco <= 0){
-                alert("O valor esta inválido");
-            }
-           
-        } else{
-            mostra("<h3>" + nome + " R$ " + formataGrana(preco) + "</h3>");
+  
+    var tentativa = 1;
+    var soma = 0;
+  
+    var arrayGeral = pega("pacoca");
+    
+        if(arrayGeral == null){
+            arrayGeral = [];
         }
+    
+        for(var i = 0; i < arrayGeral.length; i++){
         
-    }
-var button = document.querySelector("#botaoPedido");
-    button.onclick = pedido;
+            document.write("<p>Nome : " + arrayGeral[i].nome + " Valor :" + arrayGeral[i].valor + "</p>");
+        }
+
+        function coletaDado(nome,valor){      
+            var objProduto = {"nome":nome,"valor":valor};
+            arrayGeral.push(objProduto);
+        }
+
+        function salvarDb(){
+            salva("pacoca", arrayGeral);         
+        }
+
+        function calcula(valor){       
+            mostra("O valor total e " + soma);       
+        }
+
+        function pedido (){
+            var nome = campoNome.value;
+            var preco = parseFloat(campoPreco.value.replace("," , "."));
+        
+            if((nome == " " || nome.length < 2) || (isNaN(preco) || preco <= 0)) {             
+                //alert("Digite uma informação válida!");        
+                if(nome == " " || nome.length < 2){
+                    alert ("Nome inválido");
+                }
+
+                if (isNaN(preco) || preco <= 0){
+                    alert("O valor esta inválido")
+                }
+            }else  if(tentativa <= 5){
+                //Mostra o valor na tela
+                coletaDado(nome, preco);
+                mostra("<h3>" + nome + " R$ " + preco + "</h3>");
+                //limite de produtos
+                tentativa++;
+                //Soma dos produtos
+                soma = soma + preco; 
+            
+                //salvaDados;               
+            
+            }else {
+                alert("Tentativas estouraram!!!")
+            }
+                    
+        }
+ 
+    
+    var button = document.querySelector("#salvar");
+        button.onclick = salvarDb;
+    var button = document.querySelector("#botaoPedido");
+        button.onclick = pedido;
+    var button = document.querySelector("#total");
+        button.onclick = calcula;
+    
 </script>
